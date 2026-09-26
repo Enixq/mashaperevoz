@@ -1,0 +1,11 @@
+﻿# GitHub Pages не выполняет PHP
+send.php
+
+# Локальные резервные и экспериментальные материалы
+/backups/
+/SiteMaria2/
+/.tmp/
+
+# Системные файлы
+.DS_Store
+Thumbs.db
