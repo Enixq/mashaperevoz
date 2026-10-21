@@ -1,11 +1,20 @@
-﻿# GitHub Pages не выполняет PHP
+﻿# Runtime data and local secrets
+.env
+/data/site-data.json
+/uploads/
+
+# Legacy PHP handler not used by Node app
 send.php
 
-# Локальные резервные и экспериментальные материалы
+# Local backup and temporary files
 /backups/
 /SiteMaria2/
 /.tmp/
 
-# Системные файлы
+# System files
 .DS_Store
 Thumbs.db
+# SQLite runtime files
+/data/site.sqlite
+/data/site.sqlite-shm
+/data/site.sqlite-wal

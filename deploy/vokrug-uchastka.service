@@ -1,0 +1,15 @@
+﻿[Unit]
+Description=Vokrug uchastka website and admin API
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+WorkingDirectory=/var/www/vokrug-uchastka
+EnvironmentFile=/var/www/vokrug-uchastka/.env
+ExecStart=/usr/bin/node /var/www/vokrug-uchastka/server.js
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
