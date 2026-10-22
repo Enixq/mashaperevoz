@@ -1,4 +1,4 @@
-﻿const menuButton = document.querySelector('.menu-button');
+const menuButton = document.querySelector('.menu-button');
 const mobileNav = document.querySelector('.mobile-nav');
 const requestForm = document.querySelector('.form');
 const fileInput = document.querySelector('.file input');
@@ -73,18 +73,22 @@ requestForm?.addEventListener('submit', async (event) => {
 function renderPublicWorks(works) {
   const grid = document.querySelector('.work-grid');
   if (!grid || !Array.isArray(works) || !works.length) return;
-  grid.replaceChildren(...works.map((work) => {
-    const card = document.createElement('article');
-    const image = document.createElement('img');
-    image.src = work.imageUrl || 'assets/works/image (1).jpeg';
-    image.alt = work.title || 'Работы на участке';
-    const title = document.createElement('h3');
-    title.textContent = work.title || 'Работы на участке';
-    const description = document.createElement('p');
-    description.textContent = work.description || '';
-    card.append(image, title, description);
-    return card;
-  }));
+
+  const existingCards = [...grid.querySelectorAll(':scope > article')];
+  works.slice(0, 3).forEach((work, index) => {
+    const card = existingCards[index];
+    if (!card) return;
+    const image = card.querySelector('img');
+    const title = card.querySelector('h3');
+    const description = card.querySelector('p');
+
+    if (image) {
+      image.src = work.imageUrl || image.dataset.fallback || image.src;
+      image.alt = work.title || 'Работы на участке';
+    }
+    if (title) title.textContent = work.title || 'Работы на участке';
+    if (description) description.textContent = work.description || '';
+  });
 }
 
 function applyPublicSettings(settings) {
